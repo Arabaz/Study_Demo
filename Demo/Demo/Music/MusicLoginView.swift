@@ -19,7 +19,7 @@ struct MusicLoginView: View {
                 imageName: "googleLogo",
                 backgroundColor: Color(hex: "#D7503F")
             ) {
-                print("Google tapped")
+                print("Google tapped @")
             }
             .padding(.horizontal, 15)
             .padding(.top, 10)
