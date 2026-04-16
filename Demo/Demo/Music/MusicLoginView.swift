@@ -12,6 +12,7 @@ struct MusicLoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isSecure: Bool = true
+    @State private var isRememberMeChecked: Bool = false
     var body: some View {
         VStack {
             SocialSignInButton(
@@ -47,7 +48,7 @@ struct MusicLoginView: View {
             
             TextField("Enter username", text: $username)
                 .textFieldStyle(.plain)
-                .frame(minHeight: 45, maxHeight: 45)
+                .frame(minHeight: 48, maxHeight: 48)
                 .padding(.horizontal, 5)        // inner text padding (inside gray box)
                 .background(Color.gray.opacity(0.1))
                 .padding(.horizontal, 15)        // 👈 outer padding — creates space left & right
@@ -55,6 +56,10 @@ struct MusicLoginView: View {
             
             PasswordTextField(password: $password, isSecure: $isSecure)
             
+            RememberMeToggleBtn(isRememberMe: $isRememberMeChecked)
+                .padding(.vertical, 10)
+                
+ 
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -105,12 +110,12 @@ struct PasswordTextField: View {
             if isSecure {
                 SecureField("Enter password", text: $password)
                     .textFieldStyle(.plain)
-                    .frame(minHeight: 45, maxHeight: 45)
+                    .frame(minHeight: 48, maxHeight: 48)
                     .padding(.horizontal, 5)
             }else {
                 TextField("Enter password", text: $password)
                     .textFieldStyle(.plain)
-                    .frame(minHeight: 45, maxHeight: 45)
+                    .frame(minHeight: 48, maxHeight: 48)
                     .padding(.horizontal, 5)
             }
             Button {
@@ -123,6 +128,26 @@ struct PasswordTextField: View {
         }
         .background(Color.gray.opacity(0.1))
         .padding(.horizontal, 15)
+    }
+    
+}
+
+
+struct RememberMeToggleBtn: View {
+    @Binding var isRememberMe: Bool
+    
+    var body: some View {
+        Button (action: {
+            isRememberMe.toggle()
+        }) {
+            HStack {
+                Image(systemName: isRememberMe ? "checkmark.square.fill" : "square")
+                    .foregroundColor(isRememberMe ? .blue : .gray)
+                Text("Remember Me")
+                    .foregroundColor(.black)
+                    
+            }
+        }
     }
     
 }
