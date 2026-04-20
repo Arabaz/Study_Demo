@@ -60,6 +60,28 @@ struct MusicLoginView: View {
                 .padding(.vertical, 10)
                 
  
+            Button(action: {
+                print("Sign in")
+            }) {
+                HStack {
+                    Spacer()
+                    
+                    Text("Sign In")
+                        .foregroundColor(.white)
+                    
+                    Image("Union")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    
+                    Spacer()
+                }
+                .frame(height: 50)
+                .background(Color.black)
+                .cornerRadius(8)
+            }
+            .padding(.horizontal, 15)
+            
+            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -124,7 +146,7 @@ struct PasswordTextField: View {
                 Image(systemName: isSecure ? "eye.slash" : "eye")
                     .frame(minWidth: 20, maxWidth: 20, minHeight: 20, maxHeight: 20)
             }.padding(.trailing, 10)
-            
+              
         }
         .background(Color.gray.opacity(0.1))
         .padding(.horizontal, 15)
